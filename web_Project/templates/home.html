@@ -1,0 +1,67 @@
+<html>
+	<head>
+        <meta charset = "UTF-8">
+        <meta name = "renderer" content = "webkit"/>
+        <meta name = "force-rendering" content = "webkit"/>
+        <title>价格预测显示</title>
+        <link rel = "stylesheet" href = "../static/homestyle.css"/>
+		<!-- 引入 echarts.js -->
+	    <script type = "text/javascript" src = "../static/echarts.js"></script>
+	    <!-- 引入jquery.js -->
+	    <script type = "text/javascript" src = "../static/jquery.min.js"></script>
+        <script src = "../static/jquery.js"></script>
+	</head>
+	<body>
+        <div class =" container">
+        <!--下拉框设置-->
+            <div class = "ItemChange">
+                <p>请选择需要进行价格预测的价格类型：</p>
+                <select id = "ChangeType" onchange = "ChangeTypeF()">
+                    <option value = "waisan">外三元</option>
+                    <option value = "neisan">内三元</option>
+                    <option value = "tuza">土杂猪</option>
+                    <option value = "corn">玉米</option>
+                </select>
+            </div>
+    
+            <!--图表展示部分-->
+            <div class = "ShowCharts">
+                <!--预测走势-->
+                <div class = "float_box">
+                    <div id = "Predict_Result" style = "width: 500px;height:250px;"></div>
+                    <p>上图显示未来6个月内的预测价格及其走势。</p>
+                </div>
+                <!--模型训练效果-->
+                <div class = "float_box">
+                    <div id = "Train_Result" style = "width: 500px;height:250px;"></div>
+                    <p>上图显示模型训练表现</p>
+                </div>
+            </div>
+    
+            <!--查询特定日期的预测价格-->
+            <div class = "SelectDate">
+                <p>通过在下方输入框选择未来日期，查询该日期的预测价格：</p>
+                <p>选择日期:</p>
+                <input id = "Date_Select" type = "text"  onClick = "WdatePicker()" readonly = " readonly">
+                <button type =" button" onClick = "getDateData(document.getElementById('Date_Select').value)">查询预测价格</button>
+                <div id="PedictDay" style = "width:300px;height:300px;display:none;">
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>预测价格</td>
+                        </tr>
+                        <tr>
+                            <td><div id = "TypeName">外三元</div></td>
+                            <td><p id = "TypePrice">0000</p></td>
+                        </tr>
+                    </table>
+                </div>
+                <p id = "Nodata" style = "display:none;">超过预测日期！</p>
+            </div>
+        </div>
+    </body>
+    <!--引入日期选择框文件-->
+    <script type = "text/javascript" src = "../static/WdatePicker.js"></script>
+    <!--引入逻辑文件-->
+    <script rel = "javascript" type = "text/javascript" src = "../static/home.js"></script>
+</html>

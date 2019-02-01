@@ -1,0 +1,7 @@
+datetime
+pandas
+numpy
+scikit-learn
+flask
+flask_cors
+gevent
